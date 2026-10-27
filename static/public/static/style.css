@@ -576,3 +576,12 @@ footer a:hover { color: var(--ik-primary); text-decoration: underline; }
   .button:active { transform: none !important; }
   .lists li:hover { background: var(--ik-bg); border-color: var(--ik-primary); }
 }
+
+/* ネオビジョン: 登録フォームの説明（届く内容・頻度・プライバシーポリシー） */
+.sub-notice {
+  margin: var(--ik-space-5) 0;
+  color: var(--ik-ink-500);
+  font-size: var(--ik-text-sm);
+  line-height: 1.7;
+}
+.sub-notice ul { margin: var(--ik-space-3) 0 0; padding-left: 1.2em; }
