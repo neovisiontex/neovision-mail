@@ -1,53 +1,37 @@
-# render.yaml — Render Blueprint for Hakobu (listmonk fork).
-# Defines a paid PostgreSQL database (basic-256mb) + a paid Docker web service (starter) and wires the DB
-# credentials into the app via LISTMONK_* env vars. The admin password is generated
-# by Render (never committed to this public repo).
+# render.yaml — Render Blueprint for Hakobu (listmonk fork) / 株式会社ネオビジョンテックス
+# 無料構成（行田さん了承 2026/10/27）:
+#   - Web: Render 無料枠（15分無通信でスリープ → .github/workflows/keepalive.yml が10分ごとに起こす）
+#   - DB : Neon 無料枠の PostgreSQL（Render 無料DBは約30日で消えるため使わない）
+#   - 送信: Brevo SMTP 2525番（Render 無料枠は 25/465/587 番の外向き通信を止めている）
+# DB の接続情報と管理者パスワードは Render の画面で入れる（sync: false）。このリポジトリには書かない。
 #
-# Deploy: Render Dashboard → New → Blueprint → connect the NeoVision repository (neovision-mail).
-# Render reads this file, provisions both resources, and builds from Dockerfile.render.
-
-databases:
-  - name: neovision-mail-db
-    databaseName: listmonk
-    user: listmonk
-    plan: basic-256mb
+# Deploy: Render Dashboard → New → Blueprint → neovisiontex/neovision-mail を接続。
 
 services:
   - type: web
     name: neovision-mail
     runtime: docker
-    plan: starter
+    plan: free
     dockerfilePath: ./Dockerfile.render
     autoDeploy: true
     envVars:
-      # --- DB: pulled from the managed Postgres above ---
+      # --- DB: Neon（値は Render の画面で入力）---
       - key: LISTMONK_db__host
-        fromDatabase:
-          name: neovision-mail-db
-          property: host
+        sync: false
       - key: LISTMONK_db__port
-        fromDatabase:
-          name: neovision-mail-db
-          property: port
+        value: "5432"
       - key: LISTMONK_db__user
-        fromDatabase:
-          name: neovision-mail-db
-          property: user
+        sync: false
       - key: LISTMONK_db__password
-        fromDatabase:
-          name: neovision-mail-db
-          property: password
+        sync: false
       - key: LISTMONK_db__database
-        fromDatabase:
-          name: neovision-mail-db
-          property: database
-      # Render Postgres requires SSL.
+        sync: false
       - key: LISTMONK_db__ssl_mode
         value: require
       - key: LISTMONK_db__max_open
-        value: "25"
+        value: "10"
       - key: LISTMONK_db__max_idle
-        value: "25"
+        value: "5"
       - key: LISTMONK_db__max_lifetime
         value: "300s"
       - key: TZ
