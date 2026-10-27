@@ -44,8 +44,8 @@
         すべての改変を含む）は、以下で公開しています。
       </p>
       <p>
-        <a href="https://github.com/NEOVISION_GITHUB/neovision-mail" target="_blank" rel="noopener noreferrer" class="about-source">
-          github.com/NEOVISION_GITHUB/neovision-mail
+        <a href="https://github.com/neovisiontex/neovision-mail" target="_blank" rel="noopener noreferrer" class="about-source">
+          github.com/neovisiontex/neovision-mail
         </a>
       </p>
       <p class="about-upstream-doc">
