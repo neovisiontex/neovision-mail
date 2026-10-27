@@ -1,45 +1,45 @@
 # render.yaml — Render Blueprint for Hakobu (listmonk fork).
-# Defines a free PostgreSQL database + a free Docker web service and wires the DB
+# Defines a paid PostgreSQL database (basic-256mb) + a paid Docker web service (starter) and wires the DB
 # credentials into the app via LISTMONK_* env vars. The admin password is generated
 # by Render (never committed to this public repo).
 #
-# Deploy: Render Dashboard → New → Blueprint → connect IKEMENLTD/ikemen-mailer.
+# Deploy: Render Dashboard → New → Blueprint → connect the NeoVision repository (neovision-mail).
 # Render reads this file, provisions both resources, and builds from Dockerfile.render.
 
 databases:
-  - name: ikemen-mailer-db
+  - name: neovision-mail-db
     databaseName: listmonk
     user: listmonk
-    plan: free
+    plan: basic-256mb
 
 services:
   - type: web
-    name: ikemen-mailer
+    name: neovision-mail
     runtime: docker
-    plan: free
+    plan: starter
     dockerfilePath: ./Dockerfile.render
     autoDeploy: true
     envVars:
       # --- DB: pulled from the managed Postgres above ---
       - key: LISTMONK_db__host
         fromDatabase:
-          name: ikemen-mailer-db
+          name: neovision-mail-db
           property: host
       - key: LISTMONK_db__port
         fromDatabase:
-          name: ikemen-mailer-db
+          name: neovision-mail-db
           property: port
       - key: LISTMONK_db__user
         fromDatabase:
-          name: ikemen-mailer-db
+          name: neovision-mail-db
           property: user
       - key: LISTMONK_db__password
         fromDatabase:
-          name: ikemen-mailer-db
+          name: neovision-mail-db
           property: password
       - key: LISTMONK_db__database
         fromDatabase:
-          name: ikemen-mailer-db
+          name: neovision-mail-db
           property: database
       # Render Postgres requires SSL.
       - key: LISTMONK_db__ssl_mode
@@ -55,6 +55,6 @@ services:
       # --- First-run super admin (auto-created on --install) ---
       - key: LISTMONK_ADMIN_USER
         value: admin
-      # Render generates a strong value; view it in Dashboard → ikemen-mailer → Environment.
+      # Render generates a strong value; view it in Dashboard → neovision-mail → Environment.
       - key: LISTMONK_ADMIN_PASSWORD
         generateValue: true

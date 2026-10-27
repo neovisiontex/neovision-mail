@@ -20,7 +20,7 @@
             <a class="a" href="#" @click.prevent="$utils.confirm('選択したバウンス記録を削除します。よろしいですか？', () => deleteBounces())" data-cy="btn-delete">
               <b-icon icon="trash-can-outline" size="is-small" /> {{ $t('globals.buttons.delete') }}
             </a>
-            <a class="a" href="#" @click.prevent="$utils.confirm('選択した加入者をブロックリストに追加します。よろしいですか？', () => blocklistSubscribers())"
+            <a class="a" href="#" @click.prevent="$utils.confirm('選択した購読者をブロックリストに追加します。よろしいですか？', () => blocklistSubscribers())"
               data-cy="btn-manage-blocklist">
               <b-icon icon="account-off-outline" size="is-small" /> {{ $t('import.blocklist') }}
             </a>

@@ -171,7 +171,7 @@
       </b-table-column>
 
       <template #empty v-if="!loading.subscribers">
-        <empty-placeholder label="まだ加入者がいません。" />
+        <empty-placeholder label="まだ購読者がいません。" />
       </template>
     </b-table>
 
@@ -366,7 +366,7 @@ export default Vue.extend({
 
     deleteSubscriber(sub) {
       this.$utils.confirm(
-        `加入者「${sub.email}」を削除します。よろしいですか？`,
+        `購読者「${sub.email}」を削除します。よろしいですか？`,
         () => {
           this.$api.deleteSubscriber(sub.id).then(() => {
             this.querySubscribers();

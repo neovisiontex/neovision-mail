@@ -9,7 +9,7 @@
         <h2 class="about-label">製品</h2>
         <p class="about-value">Hakobu</p>
         <p class="about-meta">
-          IKEMEN-LTD 向けの自社ホスト型メール配信・メーリングリスト基盤です。
+          株式会社ネオビジョンテックスのメールマガジン配信基盤です。
         </p>
       </article>
 
@@ -44,8 +44,8 @@
         すべての改変を含む）は、以下で公開しています。
       </p>
       <p>
-        <a href="https://github.com/IKEMENLTD/ikemen-mailer" target="_blank" rel="noopener noreferrer" class="about-source">
-          github.com/IKEMENLTD/ikemen-mailer
+        <a href="https://github.com/NEOVISION_GITHUB/neovision-mail" target="_blank" rel="noopener noreferrer" class="about-source">
+          github.com/NEOVISION_GITHUB/neovision-mail
         </a>
       </p>
       <p class="about-upstream-doc">
