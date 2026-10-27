@@ -97,6 +97,14 @@
             &nbsp;&nbsp;
             <a href="{{ MessageURL }}" style="color: #888;">{{ L.T "email.viewInBrowser" }}</a>
         </p>
+        <p style="line-height: 1.7;">
+            送信者：株式会社ネオビジョンテックス<br />
+            〒106-0032 東京都港区六本木5丁目16番50号 六本木デュープレックスエムズ412<br />
+            お問い合わせ：03-4400-4193（受付 10:00〜18:00・土日祝を除く）／
+            <a href="mailto:info@neovisiontex.biz" style="color: #888;">info@neovisiontex.biz</a><br />
+            配信停止は上の「{{ L.T "email.unsub" }}」から行えます。<br />
+            <a href="https://neovisiontec.com/privacy" style="color: #888;">プライバシーポリシー</a>
+        </p>
     </div>
     <div class="gutter" style="padding: 30px;">&nbsp;{{ TrackView }}</div>
 </body>
