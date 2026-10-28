@@ -1228,6 +1228,12 @@ section.analytics {
   }
 }
 
+/* リストの説明文（登録ページ・確認メールに出る）を直しやすいよう広げる */
+.textarea.list-description {
+  min-height: 12em !important;
+  resize: vertical;
+}
+
 /* Settings */
 .settings {
   .disabled {

@@ -51,7 +51,7 @@
 
         <b-field :label="$t('globals.fields.description')" label-position="on-border">
           <b-input :maxlength="2000" v-model="form.description" name="description" type="textarea"
-            :placeholder="$t('globals.fields.description')" />
+            custom-class="list-description" rows="8" :placeholder="$t('globals.fields.description')" />
         </b-field>
 
         <b-field :message="$t('lists.archivedHelp')" :label="$t('lists.archived')">
