@@ -94,7 +94,7 @@
             <b-table-column v-slot="props" field="permissions" label="権限">
               <div v-for="p in props.row.permissions" :key="p">
                 <b-checkbox v-model="form.permissions" :native-value="p" :disabled="disabled">
-                  {{ p }}
+                  {{ permLabels[p] || p }} <span class="has-text-grey is-size-7">{{ p }}</span>
                   <b-icon v-if="p === 'subscribers:sql_query'" icon="warning-empty" type="is-danger" size="is-small"
                     aria-label="警告: 高リスクの権限" />
                 </b-checkbox>
@@ -121,6 +121,38 @@ import Vue from 'vue';
 import { mapState } from 'vuex';
 import CopyText from '../components/CopyText.vue';
 
+// 権限の日本語名（Hakobu 独自）。サーバー側の権限名はそのまま小さく併記する。
+const permLabels = {
+  'lists:get_all': 'すべてのリストを見る',
+  'lists:manage_all': 'すべてのリストを作成・編集',
+  'subscribers:get': '購読者を見る',
+  'subscribers:get_all': 'すべての購読者を見る',
+  'subscribers:manage': '購読者を追加・編集',
+  'subscribers:import': '購読者を取り込む',
+  'subscribers:sql_query': '購読者をSQLで検索（高リスク）',
+  'tx:send': 'トランザクションメールを送る',
+  'campaigns:get': 'キャンペーンを見る',
+  'campaigns:get_all': 'すべてのキャンペーンを見る',
+  'campaigns:get_analytics': 'キャンペーンの分析を見る',
+  'campaigns:manage': 'キャンペーンを作成・編集',
+  'campaigns:manage_all': 'すべてのキャンペーンを作成・編集',
+  'campaigns:send': 'キャンペーンを送信・予約',
+  'bounces:get': 'バウンスを見る',
+  'bounces:manage': 'バウンスを管理',
+  'webhooks:post_bounce': 'バウンスを登録（外部連携）',
+  'media:get': 'メディアを見る',
+  'media:manage': 'メディアを追加・削除',
+  'templates:get': 'テンプレートを見る',
+  'templates:manage': 'テンプレートを作成・編集',
+  'users:get': 'ユーザーを見る',
+  'users:manage': 'ユーザーを追加・編集',
+  'roles:get': 'ロールを見る',
+  'roles:manage': 'ロールを作成・編集',
+  'settings:get': '設定を見る',
+  'settings:manage': '設定を変更',
+  'settings:maintain': 'メンテナンス（データ削除など）',
+};
+
 export default Vue.extend({
   name: 'RoleForm',
 
@@ -136,6 +168,7 @@ export default Vue.extend({
 
   data() {
     return {
+      permLabels,
       // Binds form input values.
       form: {
         curList: null,
